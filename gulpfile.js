@@ -4,8 +4,8 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-// const dist = "./dist/";
-const dist ="/Applications/OpenServer/domains/test"; // галп автоматически весь проект сбилдит в данный путь
+const dist = "./dist/";
+// const dist ="/Applications/OpenServer/domains/test"; // галп автоматически весь проект сбилдит в данный путь
 
 
 gulp.task("copy-html", () => {
