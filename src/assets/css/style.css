@@ -18,6 +18,21 @@ body {
   color: red;
 }
 
+.faded {
+  animation-name: faded;
+  animation-duration: 1.5s;
+}
+
+@keyframes faded {
+  from {
+    opacity: 0.1;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -315,7 +330,7 @@ textarea:focus {
 /*Main*/
 .main {
   padding: 10rem 0;
-  background: #ffffff url(../img/main/bg.png) 0 0 no-repeat;
+  background: #ffffff url(../img/main/bg.png) center center no-repeat;
 }
 
 .main h1 {
