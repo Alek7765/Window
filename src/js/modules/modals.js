@@ -6,6 +6,16 @@ const modals = () => {
             windows = document.querySelectorAll('[data-modal]'),
             scroll = calcScroll();
 
+        function closeModal() {
+            windows.forEach(item => {
+                item.style.display = 'none';
+            });
+
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+            document.body.style.marginRight = `0px`;
+        }
+
         trigger.forEach(item => {
             item.addEventListener('click', (e) => {
                 if (e.target) {
@@ -23,29 +33,19 @@ const modals = () => {
             });
         })
 
-        close.addEventListener('click', () => {
-            windows.forEach(item => {
-                item.style.display = 'none';
-            });
-
-            modal.style.display = "none";
-            document.body.style.overflow = "";
-            document.body.style.marginRight = `0px`;
-            // document.body.classList.remove('modal-open');
-        })
+        close.addEventListener('click', closeModal);
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal && closeClickOverlay) { // если кликнули на подложку И данный параметр true, только тогда закрыть модалку
-                windows.forEach(item => {
-                    item.style.display = 'none';
-                });
-
-                modal.style.display = "none";
-                document.body.style.overflow = "";
-                document.body.style.marginRight = `0px`;
-                // document.body.classList.remove('modal-open');
+            if (e.target === modal && closeClickOverlay) { // если кликнули на подложку И данный параметр true
+                closeModal();                              // запускаем ф-цию по закрытию модалки
             }
-        })
+        });
+
+        document.addEventListener('keydown', (e) => {                 // при нажатии на клавишу
+            if (e.code === "Escape" && modal.style.display === "block") { // Esc и при открытой модалке
+                closeModal();                     // сработает ф-ция по закрытию модалки 
+            }
+        });
     }
 
     function showModalByTime(selector, time) {
@@ -69,7 +69,6 @@ const modals = () => {
 
         return scrollWidth;
     }
-
 
     bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
     bindModal('.phone_link', '.popup', '.popup .popup_close');

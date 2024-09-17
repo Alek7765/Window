@@ -960,6 +960,10 @@ textarea:focus {
   cursor: pointer;
 }
 
+.balcon_icons img {
+  cursor: pointer;
+}
+
 .popup_calc_close {
   position: absolute;
   top: -2.2rem;

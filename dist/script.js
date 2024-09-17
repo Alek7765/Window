@@ -137,7 +137,7 @@ const forms = state => {
         clearInputs(); // очищаем все инпуты
         setTimeout(() => {
           statusMessage.remove(); // удаляем блок с статусом отправки 
-        }, 5000); // через 5 сек
+        }, 3000); // через 5 сек
       });
     });
   });
@@ -209,6 +209,14 @@ const modals = () => {
       close = document.querySelector(closeSelector),
       windows = document.querySelectorAll('[data-modal]'),
       scroll = calcScroll();
+    function closeModal() {
+      windows.forEach(item => {
+        item.style.display = 'none';
+      });
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+      document.body.style.marginRight = `0px`;
+    }
     trigger.forEach(item => {
       item.addEventListener('click', e => {
         if (e.target) {
@@ -223,25 +231,18 @@ const modals = () => {
         // document.body.classList.add('modal-open');
       });
     });
-    close.addEventListener('click', () => {
-      windows.forEach(item => {
-        item.style.display = 'none';
-      });
-      modal.style.display = "none";
-      document.body.style.overflow = "";
-      document.body.style.marginRight = `0px`;
-      // document.body.classList.remove('modal-open');
-    });
+    close.addEventListener('click', closeModal);
     modal.addEventListener('click', e => {
       if (e.target === modal && closeClickOverlay) {
-        // если кликнули на подложку И данный параметр true, только тогда закрыть модалку
-        windows.forEach(item => {
-          item.style.display = 'none';
-        });
-        modal.style.display = "none";
-        document.body.style.overflow = "";
-        document.body.style.marginRight = `0px`;
-        // document.body.classList.remove('modal-open');
+        // если кликнули на подложку И данный параметр true
+        closeModal(); // запускаем ф-цию по закрытию модалки
+      }
+    });
+    document.addEventListener('keydown', e => {
+      // при нажатии на клавишу
+      if (e.code === "Escape" && modal.style.display === "block") {
+        // Esc и при открытой модалке
+        closeModal(); // сработает ф-ция по закрытию модалки 
       }
     });
   }
@@ -14318,7 +14319,7 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
-  let modalState = {};
+  let modalState = {}; // сюда будут записываться те данный, которые выберет пользователь
   let deadline = '2024-09-30';
   (0,_modules_changeModalState__WEBPACK_IMPORTED_MODULE_4__["default"])(modalState);
   (0,_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();

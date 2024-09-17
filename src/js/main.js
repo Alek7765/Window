@@ -9,7 +9,7 @@ import images from "./modules/images";
 window.addEventListener('DOMContentLoaded', () => {
     "use strict";
 
-    let modalState = {};
+    let modalState = {}; // сюда будут записываться те данный, которые выберет пользователь
     let deadline = '2024-09-30';
 
     changeModalState(modalState);
