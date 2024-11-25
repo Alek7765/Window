@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     "use strict";
 
     let modalState = {}; // сюда будут записываться те данный, которые выберет пользователь
-    let deadline = '2024-09-30';
+    let deadline = '2025-01-30';
 
     changeModalState(modalState);
     modals();
