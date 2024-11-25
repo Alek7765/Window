@@ -14320,7 +14320,7 @@ window.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
   let modalState = {}; // сюда будут записываться те данный, которые выберет пользователь
-  let deadline = '2024-09-30';
+  let deadline = '2025-01-30';
   (0,_modules_changeModalState__WEBPACK_IMPORTED_MODULE_4__["default"])(modalState);
   (0,_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
